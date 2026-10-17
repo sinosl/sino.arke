@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sino Lam – Analysis Portfolio</title>
+<meta name="description" content="Portfolio of Sino Lam: cost modelling, decision support and data analysis projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#14284B; --teal:#1F7A8C; --amber:#E09F3E; --red:#B23A48;
+  --ink:#1E2533; --muted:#5B6578; --line:#DDE3EC; --soft:#F3F6FA; --bg:#FFFFFF;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; font-family:Inter, Arial, sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; font-size:17px; }
+a { color:var(--teal); }
+.wrap { max-width:1040px; margin:0 auto; padding:0 24px; }
+nav { position:sticky; top:0; background:rgba(255,255,255,.94); backdrop-filter:blur(6px); border-bottom:1px solid var(--line); z-index:10; }
+nav .wrap { display:flex; justify-content:space-between; align-items:center; height:58px; }
+nav .name { font-weight:700; color:var(--navy); text-decoration:none; }
+nav .links a { margin-left:20px; color:var(--muted); text-decoration:none; font-size:15px; }
+nav .links a:hover { color:var(--navy); }
+header.hero { background:var(--navy); color:#fff; padding:80px 0 72px; }
+.hero .kicker { color:#8CC7D3; font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:13px; }
+.hero h1 { font-size:44px; line-height:1.15; margin:12px 0 18px; max-width:760px; }
+.hero p { color:#C9D3E3; max-width:700px; font-size:18px; margin:0 0 26px; }
+.btn { display:inline-block; padding:12px 20px; border-radius:8px; font-weight:600; text-decoration:none; font-size:15px; margin:6px 10px 0 0; }
+.btn.primary { background:var(--teal); color:#fff; }
+.btn.ghost { border:1px solid #6F7FA0; color:#fff; }
+.btn.light { background:var(--soft); color:var(--navy); border:1px solid var(--line); }
+section { padding:64px 0; border-bottom:1px solid var(--line); }
+section h2 { font-size:30px; color:var(--navy); margin:0 0 10px; line-height:1.25; }
+.eyebrow { color:var(--teal); font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:13px; }
+.lead { color:var(--muted); font-size:18px; max-width:760px; }
+.stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:30px 0; }
+.stat { background:var(--soft); border-left:4px solid var(--navy); border-radius:8px; padding:18px; }
+.stat b { display:block; font-size:30px; color:var(--navy); line-height:1.1; margin-bottom:6px; }
+.stat span { font-size:14px; color:var(--muted); }
+.stat.t { border-color:var(--teal); } .stat.t b { color:var(--teal); }
+.stat.r { border-color:var(--red); } .stat.r b { color:var(--red); }
+.stat.a { border-color:var(--amber); } .stat.a b { color:#B97A1E; }
+.grid2 { display:grid; grid-template-columns:1.25fr 1fr; gap:36px; align-items:start; margin-top:28px; }
+figure { margin:0; }
+figure img { width:100%; height:auto; border:1px solid var(--line); border-radius:8px; background:#fff; }
+figcaption { font-size:13px; color:var(--muted); margin-top:8px; }
+h3 { color:var(--navy); font-size:19px; margin:20px 0 6px; }
+.steps { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:28px; }
+.step { background:var(--soft); border-top:4px solid var(--navy); border-radius:8px; padding:16px; font-size:15px; }
+.step strong { display:block; color:var(--navy); margin-bottom:6px; }
+.formula { background:var(--soft); border-radius:8px; padding:14px 18px; font-size:15px; margin-top:20px; }
+table { width:100%; border-collapse:collapse; font-size:15px; margin-top:20px; }
+th { background:var(--navy); color:#fff; text-align:left; padding:10px 12px; font-weight:600; }
+td { padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+tr:nth-child(even) td { background:var(--soft); }
+.conf { display:inline-block; padding:2px 10px; border-radius:20px; font-size:13px; font-weight:600; }
+.High { background:#C6EFCE; } .Medium { background:#FFEB9C; } .Low { background:#FFC7CE; }
+.recs { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:24px; }
+.rec { border:1px solid var(--line); border-radius:8px; padding:16px 18px; }
+.rec strong { color:var(--navy); }
+.card { border:1px solid var(--line); border-radius:10px; padding:26px; margin-top:24px; }
+.tags span { display:inline-block; background:var(--soft); border-radius:20px; padding:3px 12px; font-size:13px; margin:4px 6px 0 0; color:var(--navy); }
+.note { font-size:14px; color:var(--muted); }
+ul.src { font-size:14px; padding-left:18px; }
+ul.src li { margin-bottom:6px; }
+footer { padding:40px 0 60px; color:var(--muted); font-size:14px; }
+@media (max-width:820px) {
+  body { font-size:16px; }
+  .wrap { padding:0 16px; }
+  .hero h1 { font-size:32px; }
+  .stats { grid-template-columns:1fr 1fr; }
+  .grid2, .recs { grid-template-columns:1fr; }
+  .steps { grid-template-columns:1fr 1fr; }
+  nav .links a { margin-left:12px; font-size:14px; }
+  table { font-size:13px; } th, td { padding:8px; }
+  .hide-sm { display:none; }
+}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="name" href="#top">Sino Lam</a>
+  <div class="links"><a href="#type31">Cost model</a><a href="#volleyball">Volleyball model</a><a href="#about">About</a></div>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <div class="kicker">Analysis portfolio</div>
+  <h1>Turning public data into evidence for big decisions</h1>
+  <p>I'm Sino Lam, a University of Bath graduate in International Development with Economics. This portfolio shows how I build models, test assumptions and explain the results clearly.</p>
+  <a class="btn primary" href="#type31">View the Type 31 cost model</a>
+  <a class="btn ghost" href="mailto:sinolamsl@gmail.com">Contact me</a>
+</div></header>
+
+<section id="type31"><div class="wrap">
+  <div class="eyebrow">Project 1 · Whole-life cost, sensitivity and risk analysis</div>
+  <h2>What will the Royal Navy's Type 31 frigates cost to own?</h2>
+  <p class="lead">An independent whole-life cost model for the five Type 31 frigates, built in Excel from published UK data, calibrated against US, Canadian and Australian programmes, and stress-tested with sensitivity analysis and a 2,000-run Monte Carlo simulation.</p>
+  <a class="btn light" href="files/Type31_WLC_Summary_Slides.pdf" target="_blank" rel="noopener">Summary slides (PDF)</a>
+  <a class="btn light" href="files/Type31_WholeLifeCost_Risk_Model.xlsx" download>Excel model (.xlsx)</a>
+
+  <div class="stats">
+    <div class="stat"><b>£6.0bn</b><span>Whole-life cost for five ships (point estimate)</span></div>
+    <div class="stat t"><b>62%</b><span>Share spent running and supporting the ships</span></div>
+    <div class="stat r"><b>£6.7bn</b><span>P80: 80% chance cost is at or below this</span></div>
+    <div class="stat a"><b>£698m</b><span>Contingency needed above the point estimate</span></div>
+  </div>
+  <p class="note">All figures £, approximate 2023-24 prices. Simulation figures are from one 2,000-iteration run and vary slightly each time the model recalculates.</p>
+
+  <h3>The approach</h3>
+  <div class="steps">
+    <div class="step"><strong>1. Inputs</strong>Every number in one sheet, tagged Sourced, Derived, Benchmark or Assumption, with low, base and high values.</div>
+    <div class="step"><strong>2. Cost model</strong>Year-by-year costs 2019-2065 for each ship: build, crew and fuel, maintenance, indirect support, mid-life update, disposal.</div>
+    <div class="step"><strong>3. Benchmarking</strong>Checked against US Navy, US GAO, Canadian and Australian evidence.</div>
+    <div class="step"><strong>4. Sensitivity</strong>Each uncertain input moved to its low and high value to rank what drives the answer.</div>
+    <div class="step"><strong>5. Risk</strong>Monte Carlo simulation with triangular distributions gives a P10-P90 confidence range.</div>
+  </div>
+  <div class="formula"><b>Core equation:</b> Whole-life cost = Acquisition × (1 + growth) + Ships × Life × (Operating + Maintenance) × (1 + Indirect uplift) + Ships × (Mid-life update + Disposal)</div>
+
+  <div class="grid2">
+    <figure><img src="assets/annual.png" alt="Stacked bar chart of annual Type 31 costs by category from 2019 to 2065" loading="lazy">
+      <figcaption>Annual cost profile. Build spend peaks in the mid-2020s; running costs continue for 25 years per ship.</figcaption></figure>
+    <div>
+      <h3>Owning costs more than buying</h3>
+      <p>The £2.3bn purchase price is only 38% of the total. Crew, fuel, maintenance, in-service support, mid-life updates and disposal add £3.7bn over the ships' lives.</p>
+      <p>Discounted at the HM Treasury Green Book rate of 3.5%, future costs from 2026 are worth £3.1bn today.</p>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <figure><img src="assets/bench.png" alt="Bar chart comparing support share of whole-life cost across programmes" loading="lazy">
+      <figcaption>Support share of whole-life cost: Type 31 against international comparators.</figcaption></figure>
+    <div>
+      <h3>Calibrating with international data</h3>
+      <p>Published UK running costs cover only direct costs. On those alone, support would be 52% of whole-life cost, below every comparator (59-72%).</p>
+      <p>The US Navy's FFG-62 frigate estimate shows indirect and sustaining support adding about 62% on top of direct costs. Applying that ratio lifts the Type 31 to 62%, and its annual running cost to 5.8% of unit build cost, close to FFG-62's 5.7%.</p>
+      <p>Without this step, the estimate would have been £4.8bn, understating the true cost by about £1.3bn.</p>
+    </div>
+  </div>
+
+  <h3>Key assumptions</h3>
+  <table>
+    <tr><th>Input</th><th>Base (range)</th><th class="hide-sm">Basis</th><th>Confidence</th></tr>
+    <tr><td>Acquisition budget</td><td>£2.2bn</td><td class="hide-sm">MoD letter to the Public Accounts Committee, May 2023</td><td><span class="conf High">High</span></td></tr>
+    <tr><td>Build cost growth</td><td>5% (0-20%)</td><td class="hide-sm">Inflation since 2022 not in budget; contractor reported losses</td><td><span class="conf Medium">Medium</span></td></tr>
+    <tr><td>Service life</td><td>25 years (20-30)</td><td class="hide-sm">Standard frigate planning life; matches US FFG-62</td><td><span class="conf Medium">Medium</span></td></tr>
+    <tr><td>Crew: Type 23 → Type 31</td><td>185 → 105 (100-115)</td><td class="hide-sm">Royal Navy (HMS St Albans: crew of 185); GOV.UK</td><td><span class="conf High">High</span></td></tr>
+    <tr><td>Direct running cost</td><td>£10.7m per ship-year</td><td class="hide-sm">Type 23 FOI cost inflated to 2023-24 prices and scaled for crew</td><td><span class="conf Medium">Medium</span></td></tr>
+    <tr><td>Maintenance</td><td>£5.7m per ship-year</td><td class="hide-sm">Type 23 upkeep spend since 2014, scaled to 80%</td><td><span class="conf Low">Low</span></td></tr>
+    <tr><td>Indirect support uplift</td><td>0.62 (0.30-0.82)</td><td class="hide-sm">US FFG-62 cost breakdown</td><td><span class="conf Medium">Medium</span></td></tr>
+    <tr><td>Mid-life update</td><td>£75m (£50-150m)</td><td class="hide-sm">Type 23 refit costs</td><td><span class="conf Low">Low</span></td></tr>
+  </table>
+
+  <div class="grid2">
+    <figure><img src="assets/tornado.png" alt="Tornado chart showing which inputs change the whole-life cost most" loading="lazy">
+      <figcaption>Sensitivity: change in whole-life cost when each input moves to its low or high value.</figcaption></figure>
+    <div>
+      <h3>What drives the answer</h3>
+      <p>Service life is the biggest driver, followed by the indirect support and maintenance assumptions. These are also the least certain inputs, so they are where better data would most improve the estimate.</p>
+      <p>Crew size and disposal matter little, because the Type 31's small crew is already fixed by its design.</p>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <figure><img src="assets/scurve.png" alt="S-curve showing confidence levels for the simulated whole-life cost" loading="lazy">
+      <figcaption>Monte Carlo S-curve: P10 £5.7bn · P50 £6.3bn · P80 £6.7bn · P90 £7.0bn.</figcaption></figure>
+    <div>
+      <h3>How confident can we be?</h3>
+      <p>Across 2,000 simulated futures, 72% cost more than the point estimate, because most risks push costs up rather than down. Budgeting at P80 means holding about £698m of contingency.</p>
+    </div>
+  </div>
+
+  <h3>Recommendations</h3>
+  <div class="recs">
+    <div class="rec"><strong>Hold contingency to P80.</strong> Plan for about £6.7bn rather than the £6.0bn point estimate.</div>
+    <div class="rec"><strong>Publish the support case.</strong> The unpublished through-life support business case would replace the least certain assumptions.</div>
+    <div class="rec"><strong>Decide service life early.</strong> It is the largest single driver of whole-life cost.</div>
+    <div class="rec"><strong>Protect the small crew.</strong> Lean crewing is a key saving over the Type 23 it replaces.</div>
+  </div>
+
+  <h3>Limitations</h3>
+  <p class="note">UK running costs are estimated by analogy with the Type 23 because the Type 31 support business case is not public. Overseas programmes have different cost structures, so they are compared as ratios rather than absolute figures. The £2.2bn budget mixes price years. Every assumption is explained and rated in the Excel model's Assumptions_Log sheet.</p>
+
+  <h3>Main sources</h3>
+  <ul class="src">
+    <li><a href="https://committees.parliament.uk/publications/40198/documents/196331/default/" target="_blank" rel="noopener">MoD letter to the Public Accounts Committee on Type 31 costs (2023)</a></li>
+    <li><a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/458670/Revised_2015-06440_Average_costs_RN_Surface_vessels.pdf" target="_blank" rel="noopener">MoD FOI 2015/06440: average operating costs of RN surface vessels</a></li>
+    <li><a href="https://www.royalnavy.mod.uk/organisation/units-and-squadrons/type-23/hms-st-albans" target="_blank" rel="noopener">Royal Navy: HMS St Albans (Type 23 crew)</a></li>
+    <li><a href="https://www.esd.whs.mil/Portals/54/Documents/FOID/Reading%20Room/Selected_Acquisition_Reports/FY_2022_SARS/FFG(62)_SAR_DEC_2022_final.pdf" target="_blank" rel="noopener">US DoD: FFG-62 Selected Acquisition Report (2022)</a></li>
+    <li><a href="https://www.gao.gov/products/gao-20-2" target="_blank" rel="noopener">US GAO-20-2: Navy shipbuilding sustainment (2019)</a></li>
+    <li><a href="https://www.pbo-dpb.ca/en/publications/RP-2223-016-C--life-cycle-cost-canadian-surface-combatants-fiscal-analysis--cout-cycle-vie-navires-combat-surface-canadien-analyse-financiere" target="_blank" rel="noopener">Canadian PBO: Life Cycle Cost of the Canadian Surface Combatants (2022)</a></li>
+    <li><a href="https://anao.gov.au/work/performance-audit/anzac-class-frigates-sustainment" target="_blank" rel="noopener">ANAO: Anzac Class Frigates Sustainment (2019)</a></li>
+    <li>Full list in the Excel model's Sources sheet.</li>
+  </ul>
+</div></section>
+
+<section id="volleyball"><div class="wrap">
+  <div class="eyebrow">Project 2 · Excel data tool</div>
+  <h2>Volleyball play statistics model</h2>
+  <div class="card">
+    <p>An Excel tool used by seven university volleyball teams, covering 14 players per team. Using pivot tables and slicers, it automatically updates the major offensive and defensive statistics for every player and team as new data is entered, and visualises individual and team performance so they can be compared side by side.</p>
+    <p>It taught me to structure data so it can be filtered quickly, and to present figures so that people who didn't build the model can use them to make decisions.</p>
+    <div class="tags"><span>Excel</span><span>Pivot tables</span><span>Slicers</span><span>Data visualisation</span><span>98 players</span></div>
+  </div>
+</div></section>
+
+<section id="about" style="border-bottom:none"><div class="wrap">
+  <div class="eyebrow">About</div>
+  <h2>Sino Lam</h2>
+  <p class="lead">BSc International Development with Economics, University of Bath (2026). My dissertation was a qualitative policy analysis of Kenya's national AI policy and its impact on secondary education. I currently work as a private tutor, overseeing 11 students, and I'm building quantitative skills through MITx's Data, Economics, and Design of Policy courses.</p>
+  <p>I'm interested in evidence-based decision support: cost modelling, policy analysis and making complex findings clear.</p>
+  <a class="btn primary" href="mailto:sinolamsl@gmail.com">sinolamsl@gmail.com</a>
+</div></section>
+
+<footer><div class="wrap">© 2026 Sino Lam · Independent analysis using publicly available data. Not affiliated with the Ministry of Defence or the Royal Navy.</div></footer>
+</body>
+</html>
